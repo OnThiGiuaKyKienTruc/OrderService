@@ -4,6 +4,7 @@ import com.example.order.Entity.Order;
 import com.example.order.Service.OrderService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -12,6 +13,8 @@ import org.springframework.web.bind.annotation.*;
 public class OrderController {
     @Autowired
     private OrderService orderService;
+    @Value("${welcome}")
+    String AA;
 
     @PostMapping
     public Order saveDeparment(@RequestBody Order order){
@@ -27,6 +30,6 @@ public class OrderController {
 
     @GetMapping
     public String helloWorld(){
-        return "Hello Nguyen Trong Khoi!";
+        return AA;
     }
 }
